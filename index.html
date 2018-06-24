@@ -152,7 +152,7 @@
 					<section class="wrapper style1 align-center">
 						<div class="inner medium">
 							<h2>Get in touch</h2>
-							<form method="post" action="mailto:sreekrishnadutta.@gmail.com" name="form_name" id="form_id">
+							<form id="form_id">
 								<div class="field half first">
 									<label for="name">Name</label>
 									<input type="text" name="name" id="name" value="" />
@@ -193,6 +193,22 @@
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+	<script>
+	var $form = $('form#form_id'),
+    url = 'https://script.google.com/macros/s/AKfycbxOgreutG-HW8QtjWhME92_sUSRcyUDc9MVCo7RBTG73dC9BtY/exec'
+
+$('#submit-form').on('click', function(e) {
+  e.preventDefault();
+  var jqxhr = $.ajax({
+    url: url,
+    method: "GET",
+    dataType: "json",
+    data: $form.serializeObject()
+  }).success(
+    // do something
+  );
+})
+	</script>
 
 	</body>
 </html>
